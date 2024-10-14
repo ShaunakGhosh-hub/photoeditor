@@ -1,0 +1,91 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa; /* Light cyan background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff; /* White container */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    width: 450px;
+    text-align: center;
+    border: 2px solid #00bcd4; /* Cyan border */
+}
+
+h1 {
+    font-size: 28px;
+    color: #00796b; /* Teal heading color */
+    margin-bottom: 20px;
+}
+
+.upload-section {
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #00796b; /* Teal border */
+    background-color: #e0f2f1; /* Light teal background */
+    color: #004d40; /* Dark teal text */
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow */
+}
+
+input[type="file"]:hover {
+    background-color: #00acc1; /* Brighter cyan on hover */
+    color: #ffffff; /* White text */
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 18px;
+    color: #004d40; /* Dark teal label color */
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #00796b; /* Teal border */
+    background-color: #e0f2f1; /* Light teal background */
+    color: #004d40; /* Dark teal text */
+    cursor: pointer;
+    margin-left: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow */
+}
+
+canvas {
+    margin: 20px 0;
+    border: 5px solid #00bcd4; /* Cyan border */
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow for canvas */
+}
+
+button {
+    padding: 12px 25px;
+    background-color: #00796b; /* Teal button */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+button:hover {
+    background-color: #004d40; /* Darker teal on hover */
+}

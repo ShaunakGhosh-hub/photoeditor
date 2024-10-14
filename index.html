@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Filter App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image Filter App</h1>
+
+        <!-- Image Upload -->
+        <div class="upload-section">
+            <input type="file" id="uploadImage" accept="image/*">
+        </div>
+
+        <!-- Filter Options -->
+        <div class="filter-section">
+            <label for="filterSelect">Choose a filter:</label>
+            <select id="filterSelect">
+                <option value="none">None</option>
+                <option value="grayscale(100%)">Grayscale</option>
+                <option value="blur(5px)">Blur</option>
+                <option value="brightness(150%)">Brightness</option>
+                <option value="contrast(200%)">Contrast</option>
+            </select>
+        </div>
+
+        <!-- Display Canvas -->
+        <div class="canvas-section">
+            <canvas id="canvas" width="400" height="400"></canvas>
+        </div>
+
+        <button id="applyFilterBtn">Apply Filter</button>
+        <button id="downloadBtn">Download</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
