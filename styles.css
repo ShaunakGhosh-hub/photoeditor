@@ -1,91 +1,185 @@
-/* General Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #e0f7fa; /* Light cyan background */
+/* Basic Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    background-color: #000000; /* Light cyan background */
 }
 
 .container {
-    background-color: #ffffff; /* White container */
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    width: 450px;
+    background-color: #f9ecec;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(196, 56, 56, 0.3); /* Deeper shadow */
+    max-width: 500px;
+    width: 100%;
     text-align: center;
-    border: 2px solid #00bcd4; /* Cyan border */
 }
 
 h1 {
-    font-size: 28px;
-    color: #00796b; /* Teal heading color */
+    font-size: 2rem;
+    color: #1a237e; /* Dark blue color */
     margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Text shadow */
 }
 
+/* Upload Section */
 .upload-section {
     margin-bottom: 20px;
 }
 
-input[type="file"] {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: 2px solid #00796b; /* Teal border */
-    background-color: #e0f2f1; /* Light teal background */
-    color: #004d40; /* Dark teal text */
+.upload-section input[type="file"] {
+    padding: 12px;
+    border: 2px solid #ff6f00; /* Vibrant orange border */
+    color:#1976d2;
+    border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow */
+    transition: border-color 0.3s ease;
 }
 
-input[type="file"]:hover {
-    background-color: #00acc1; /* Brighter cyan on hover */
-    color: #ffffff; /* White text */
+.upload-section input[type="file"]:hover {
+    border-color: #ff8f00; /* Lighter orange on hover */
+    color: #000000;
 }
 
+/* Filter Section */
 .filter-section {
     margin-bottom: 20px;
 }
 
-label {
-    font-size: 18px;
-    color: #004d40; /* Dark teal label color */
+.filter-section label {
+    font-size: 1.1rem;
+    color: #424242; /* Dark gray */
+    margin-right: 10px;
 }
 
-select {
+.filter-section select {
     padding: 10px;
-    font-size: 16px;
-    border-radius: 10px;
     border: 2px solid #00796b; /* Teal border */
-    background-color: #e0f2f1; /* Light teal background */
-    color: #004d40; /* Dark teal text */
-    cursor: pointer;
-    margin-left: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow */
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.filter-section select:hover {
+    border-color: #009688; /* Lighter teal on hover */
+}
+
+/* Canvas Section */
+.canvas-section {
+    margin-top: 20px;
 }
 
 canvas {
-    margin: 20px 0;
-    border: 5px solid #00bcd4; /* Cyan border */
-    border-radius: 15px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow for canvas */
-}
-
-button {
-    padding: 12px 25px;
-    background-color: #00796b; /* Teal button */
-    color: white;
-    border: none;
+    border: 2px solid #bdbdbd; /* Gray border */
     border-radius: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    max-width: 100%;
 }
 
-button:hover {
-    background-color: #004d40; /* Darker teal on hover */
+/* Buttons */
+button {
+    padding: 12px 18px;
+    margin: 12px 6px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button#applyFilterBtn {
+    background-color: #673ab7; /* Deep purple */
+    color: white;
+}
+
+button#applyFilterBtn:hover {
+    background-color: #5e35b1; /* Darker purple on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+button#downloadBtn {
+    background-color: #388e3c; /* Green */
+    color: white;
+}
+
+button#downloadBtn:hover {
+    background-color: #2e7d32; /* Darker green on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+/* Adjustment Button Styles */
+.adjustment-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.adjustment-button {
+    background-color: #1976d2; /* Blue */
+    color: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 45%;
+}
+
+.adjustment-button:hover {
+    background-color: #1565c0; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+/* Slider Panel */
+.slider-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider-panel.open {
+    display: flex;
+}
+
+.slider-panel label {
+    font-size: 1.1rem;
+    color: #424242; /* Dark gray */
+    margin-bottom: 12px;
+}
+
+.slider-panel input[type="range "] {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.slider-panel button {
+    padding: 12px 18px;
+    margin: 12px 6px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: #388e3c; /* Green */
+    color: white;
+}
+
+.slider-panel button:hover {
+    background-color: #2e7d32; /* Darker green on hover */
+    transform: translateY(-2px); /* Lift effect */
 }
