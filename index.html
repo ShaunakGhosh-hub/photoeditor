@@ -34,8 +34,23 @@
 
         <button id="applyFilterBtn">Apply Filter</button>
         <button id="downloadBtn">Download</button>
+        <button class="adjustment-button" data-adjustment="brightness">Brightness</button>
+        <button class="adjustment-button" data-adjustment="contrast">Contrast</button>
+        <button class="adjustment-button" data-adjustment="highlights">Highlights</button>
+        <button class="adjustment-button" data-adjustment="shadows">Shadows</button>
     </div>
-
+    
+    <!-- Adjustment Sliders -->
+    <div class="adjustment-buttons">
+        
+    </div>
+    
+    <div id="sliderPanel" class="slider-panel">
+        <label id="sliderLabel">Brightness</label>
+        <input type="range" id="adjustmentSlider" min="0" max="200" value="100">
+        <button id="closeSliderPanel">Close</button>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
