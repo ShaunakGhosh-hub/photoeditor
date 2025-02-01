@@ -3,52 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Filter App</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Penguin</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Image Filter App</h1>
-
-        <!-- Image Upload -->
-        <div class="upload-section">
-            <input type="file" id="uploadImage" accept="image/*">
-        </div>
-
-        <!-- Filter Options -->
-        <div class="filter-section">
-            <label for="filterSelect">Choose a filter:</label>
-            <select id="filterSelect">
-                <option value="none">None</option>
-                <option value="grayscale(100%)">Grayscale</option>
-                <option value="blur(5px)">Blur</option>
-                <option value="brightness(150%)">Brightness</option>
-                <option value="contrast(200%)">Contrast</option>
-            </select>
-        </div>
-
-        <!-- Display Canvas -->
-        <div class="canvas-section">
-            <canvas id="canvas" width="400" height="400"></canvas>
-        </div>
-
-        <button id="applyFilterBtn">Apply Filter</button>
-        <button id="downloadBtn">Download</button>
-        <button class="adjustment-button" data-adjustment="brightness">Brightness</button>
-        <button class="adjustment-button" data-adjustment="contrast">Contrast</button>
-        <button class="adjustment-button" data-adjustment="highlights">Highlights</button>
-        <button class="adjustment-button" data-adjustment="shadows">Shadows</button>
+    
+    <!-- File Upload Section -->
+    <div>
+        <input type="file" id="upload" accept="image/*">
     </div>
     
-    <!-- Adjustment Sliders -->
-    <div class="adjustment-buttons">
+    <!-- Canvas for Image Display -->
+    <div>
+        <canvas id="canvas"></canvas>
+    </div>
+    
+    <!-- Filter Options -->
+    <div>
+        <h2>Filters</h2>
+        <select id="filterSelect">
+            <option value="none">None</option>
+            <option value="grayscale">Grayscale</option>
+            <option value="sepia">Sepia</option>
+            <option value="invert">Invert Colors</option>
+            <option value="brightness">Brightness</option>
+            <option value="contrast">Contrast</option>
+        </select>
+        <button id="applyFilter">Apply Filter</button>
+    </div>
+    
+    <!-- Adjustment Options -->
+    <div>
+        <h2>Adjustments</h2>
+        <label for="brightnessRange">Brightness:</label>
+        <input type="range" id="brightnessRange" min="0" max="200" value="100">
         
+        <label for="contrastRange">Contrast:</label>
+        <input type="range" id="contrastRange" min="0" max="200" value="100">
+        
+        <label for="shadowsRange">Shadows:</label>
+        <input type="range" id="shadowsRange" min="0" max="200" value="100">
+        
+        <label for="highlightsRange">Highlights:</label>
+        <input type="range" id="highlightsRange" min="0" max="200" value="100">
+        
+        <label for="saturationRange">Saturation:</label>
+        <input type="range" id="saturationRange" min="0" max="200" value="100">
+        
+        <button id="applyAdjustments">Apply Adjustments</button>
     </div>
     
-    <div id="sliderPanel" class="slider-panel">
-        <label id="sliderLabel">Brightness</label>
-        <input type="range" id="adjustmentSlider" min="0" max="200" value="100">
-        <button id="closeSliderPanel">Close</button>
+    <!-- Download Option -->
+    <div>
+        <button id="download">Download</button>
     </div>
     
     <script src="script.js"></script>
