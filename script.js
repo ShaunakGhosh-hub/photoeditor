@@ -1,86 +1,100 @@
-// Select elements
-const uploadImage = document.getElementById('uploadImage');
+// script.js
+
+// Get DOM elements
+const uploadInput = document.getElementById('upload');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const filterSelect = document.getElementById('filterSelect');
-const applyFilterBtn = document.getElementById('applyFilterBtn');
-const downloadBtn = document.getElementById('downloadBtn');
-const adjustmentButtons = document.querySelectorAll('.adjustment-button');
-const sliderPanel = document.getElementById('sliderPanel');
-const sliderLabel = document.getElementById('sliderLabel');
-const adjustmentSlider = document.getElementById('adjustmentSlider');
-const closeSliderPanel = document.getElementById('closeSliderPanel');
+const brightnessRange = document.getElementById('brightnessRange');
+const contrastRange = document.getElementById('contrastRange');
+const shadowsRange = document.getElementById('shadowsRange');
+const highlightsRange = document.getElementById('highlightsRange');
+const saturationRange = document.getElementById('saturationRange');
+const applyFilterButton = document.getElementById('applyFilter');
+const applyAdjustmentsButton = document.getElementById('applyAdjustments');
+const downloadButton = document.getElementById('download');
 
 let image = new Image();
 let currentFilter = 'none';
+let brightness = 100;
+let contrast = 100;
+let shadows = 100;
+let highlights = 100;
+let saturation = 100;
 
-// Adjustments object to store each setting's value
-let adjustments = {
-    brightness: 100,
-    contrast: 100,
-    highlights: 100,
-    shadows: 100,
-};
-
-// Function to load image on canvas
-uploadImage.addEventListener('change', (event) => {
+// Load image onto canvas
+uploadInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
             image.src = e.target.result;
             image.onload = () => {
-                drawImageWithAdjustments();
+                canvas.width = image.width;
+                canvas.height = image.height;
+                ctx.drawImage(image, 0, 0);
             };
         };
         reader.readAsDataURL(file);
     }
 });
 
-// Apply the selected filter from the dropdown
-applyFilterBtn.addEventListener('click', () => {
+// Apply selected filter
+applyFilterButton.addEventListener('click', () => {
     currentFilter = filterSelect.value;
-    drawImageWithAdjustments();
+    applyFiltersAndAdjustments();
 });
 
-// Function to draw the image with adjustments applied
-function drawImageWithAdjustments() {
+// Apply brightness, contrast, shadows, highlights, and saturation adjustments
+applyAdjustmentsButton.addEventListener('click', () => {
+    brightness = brightnessRange.value;
+    contrast = contrastRange.value;
+    shadows = shadowsRange.value;
+    highlights = highlightsRange.value;
+    saturation = saturationRange.value;
+    applyFiltersAndAdjustments();
+});
+
+// Function to apply filters and adjustments
+function applyFiltersAndAdjustments() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.filter = `
-        ${currentFilter}
-        brightness(${adjustments.brightness}%)
-        contrast(${adjustments.contrast}%)
-    `;
-    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%)`;
+    
+    // Apply shadows and highlights using a workaround
+    ctx.globalCompositeOperation = 'multiply'; // For shadows
+    ctx.drawImage(image, 0, 0);
+    ctx.globalCompositeOperation = 'screen'; // For highlights
+    ctx.drawImage(image, 0, 0);
+    ctx.globalCompositeOperation = 'source-over'; // Reset to default
+
+    switch (currentFilter) {
+        case 'grayscale':
+            ctx.filter += ' grayscale(100%)';
+            break;
+        case 'sepia':
+            ctx.filter += ' sepia(100%)';
+            break;
+        case 'invert':
+            ctx.filter += ' invert(100%)';
+            break;
+        case 'brightness':
+            ctx.filter += ' brightness(150%)'; // Example for brightness filter
+            break;
+        case 'contrast':
+            ctx.filter += ' contrast(150%)'; // Example for contrast filter
+            break;
+        default:
+            break;
+    }
+    
+    ctx.drawImage(image, 0, 0);
+    ctx.filter = 'none'; // Reset filter for future drawings
 }
 
-// Open the slider panel and set up the adjustment type
-adjustmentButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const adjustmentType = button.getAttribute('data-adjustment');
-        sliderLabel.textContent = adjustmentType.charAt(0).toUpperCase() + adjustmentType.slice(1);
-        adjustmentSlider.value = adjustments[adjustmentType];
-        adjustmentSlider.dataset.adjustmentType = adjustmentType;
-        sliderPanel.classList.add('open');
-    });
-});
-
-// Update the adjustment value based on slider input and redraw the image
-adjustmentSlider.addEventListener('input', () => {
-    const adjustmentType = adjustmentSlider.dataset.adjustmentType;
-    adjustments[adjustmentType] = adjustmentSlider.value;
-    drawImageWithAdjustments();
-});
-
-// Close the slider panel
-closeSliderPanel.addEventListener('click', () => {
-    sliderPanel.classList.remove('open');
-});
-
-// Download the canvas as an image
-downloadBtn.addEventListener('click', () => {
+// Download the edited image
+downloadButton.addEventListener('click', () => {
     const link = document.createElement('a');
-    link.download = 'filtered-image.png';
+    link.download = 'edited-image.png';
     link.href = canvas.toDataURL();
     link.click();
 });
