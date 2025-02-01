@@ -1,185 +1,92 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* styles.css */
 
+/* General Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #000000; /* Light cyan background */
+    font-family: Arial, sans-serif;
+    background-color: #6bedf6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
 }
 
-.container {
-    background-color: #f9ecec;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(196, 56, 56, 0.3); /* Deeper shadow */
-    max-width: 500px;
-    width: 100%;
-    text-align: center;
-}
-
+/* Header Styles */
 h1 {
-    font-size: 2rem;
-    color: #1a237e; /* Dark blue color */
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Text shadow */
+    text-align: center;
+    color: #25184a; /* You can change this to a gradient if desired */
+    border: 5px solid #FF5733; /* Colorful border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px; /* Padding around the text */
+    background: linear-gradient(to right, #a08cc7, #f6f4ee, #a6e3f7); /* Colorful background */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for richness */
+    font-size: 2em; /* Increase font size for better visibility */
+    text-transform: uppercase;
 }
 
-/* Upload Section */
-.upload-section {
-    margin-bottom: 20px;
-}
-
-.upload-section input[type="file"] {
-    padding: 12px;
-    border: 2px solid #ff6f00; /* Vibrant orange border */
-    color:#1976d2;
+/* Container Styles */
+div {
+    margin: 20px 0;
+    padding: 15px;
     border-radius: 8px;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.upload-section input[type="file"]:hover {
-    border-color: #ff8f00; /* Lighter orange on hover */
-    color: #000000;
+/* Filter and Adjustment Section Styles */
+h2 {
+    color: #E94E77;
 }
 
-/* Filter Section */
-.filter-section {
-    margin-bottom: 20px;
+/* Input and Button Styles */
+input[type="file"] {
+    display: block;
+    margin: 10px auto;
 }
 
-.filter-section label {
-    font-size: 1.1rem;
-    color: #424242; /* Dark gray */
-    margin-right: 10px;
-}
-
-.filter-section select {
-    padding: 10px;
-    border: 2px solid #00796b; /* Teal border */
-    border-radius: 8px;
-    transition: border-color 0.3s ease;
-}
-
-.filter-section select:hover {
-    border-color: #009688; /* Lighter teal on hover */
-}
-
-/* Canvas Section */
-.canvas-section {
-    margin-top: 20px;
-}
-
-canvas {
-    border: 2px solid #bdbdbd; /* Gray border */
-    border-radius: 10px;
-    max-width: 100%;
-}
-
-/* Buttons */
-button {
-    padding: 12px 18px;
-    margin: 12px 6px;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button#applyFilterBtn {
-    background-color: #673ab7; /* Deep purple */
-    color: white;
-}
-
-button#applyFilterBtn:hover {
-    background-color: #5e35b1; /* Darker purple on hover */
-    transform: translateY(-2px); /* Lift effect */
-}
-
-button#downloadBtn {
-    background-color: #388e3c; /* Green */
-    color: white;
-}
-
-button#downloadBtn:hover {
-    background-color: #2e7d32; /* Darker green on hover */
-    transform: translateY(-2px); /* Lift effect */
-}
-
-/* Adjustment Button Styles */
-.adjustment-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-}
-
-.adjustment-button {
-    background-color: #1976d2; /* Blue */
-    color: #fff;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    width: 45%;
-}
-
-.adjustment-button:hover {
-    background-color: #1565c0; /* Darker blue on hover */
-    transform: translateY(-2px); /* Lift effect */
-}
-
-/* Slider Panel */
-.slider-panel {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #ffffff;
-    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.3);
-    padding: 25px;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-}
-
-.slider-panel.open {
-    display: flex;
-}
-
-.slider-panel label {
-    font-size: 1.1rem;
-    color: #424242; /* Dark gray */
-    margin-bottom: 12px;
-}
-
-.slider-panel input[type="range "] {
+input[type="range"] {
     width: 100%;
-    margin-bottom: 20px;
+    margin: 10px 0;
 }
 
-.slider-panel button {
-    padding: 12px 18px;
-    margin: 12px 6px;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    background-color: #388e3c; /* Green */
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Button Styles */
+button {
+    background-color: #4A90E2;
     color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
 }
 
-.slider-panel button:hover {
-    background-color: #2e7d32; /* Darker green on hover */
-    transform: translateY(-2px); /* Lift effect */
+button:hover {
+    background-color: #357ABD;
+}
+
+/* Canvas Styles */
+canvas {
+    border: 1px solid #ccc;
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    button {
+        width: 100%;
+    }
+
+    select, input[type="range"] {
+        width: 100%;
+    }
 }
